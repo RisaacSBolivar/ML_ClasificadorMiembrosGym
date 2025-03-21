@@ -99,7 +99,7 @@ def find_best_k(df_pca, k_range=range(2, 11)):
     return best_k
 
 def apply_spectral_clustering(df_pca, best_k):
-    model = SpectralClustering(n_clusters=best_k, affinity='nearest_neighbors', assign_labels='kmeans')
+    model = SpectralClustering(n_clusters=best_k, affinity='nearest_neighbors', assign_labels='discretize')
     labels = model.fit_predict(df_pca)
     return labels
 
