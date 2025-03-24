@@ -15,10 +15,14 @@ def explore_data(df):
     print("\nValores nulos por columna:")
     print(df.isnull().sum())
     
-    plt.figure(figsize=(10, 6))
-    sns.histplot(df.select_dtypes(include=[np.number]), bins=30, kde=True)
-    plt.title('Distribución de las Variables Numéricas')
-    plt.show()
+    numeric_cols = df.select_dtypes(include=[np.number])
+    for col in numeric_cols.columns:
+        plt.figure(figsize=(10, 6))
+        sns.histplot(numeric_cols[col], bins=30, kde=True)
+        plt.title(f'Distribución de la Variable Numérica: {col}')
+        plt.xlabel(col)
+        plt.ylabel('Frecuencia')
+        plt.show()
     
     numeric_cols = df.select_dtypes(include=[np.number])
     plt.figure(figsize=(10, 6))
